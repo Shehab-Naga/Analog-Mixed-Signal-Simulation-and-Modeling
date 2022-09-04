@@ -1,0 +1,24 @@
+CMOS inverter tran analysis
+
+* add a line here include the model file
+.LIB my_nmos.lib
+.LIB my_pmos.lib
+** Circuit Description **
+
+VDD 2 0 DC 1.8V
+
+* add a line here (pulse source)
+Vpulse 1 0 PULSE(0 1.8 0 5p 5p 45p 100p)
+* add two lines here (NMOS and PMOS instantiation )
+*M1 OUT 1 0 0 nmos_part1_2 L=180n W=10u
+*M2 OUT 1 2 2 pmos_part1_1 L=180n W=20u
+M1 OUT 1 0 0 nmos_part1_6 L=180n W=10u AD=4.5p AS=4.5p PD=20.9u PS=20.9u
+M2 OUT 1 2 2 pmos_part1_2 L=180n W=20u AD=4.5p AS=4.5p PD=20.9u PS=20.9u
+** Analysis Requests **
+*add a line here (use transient analysis for two periods)
+.TRAN 1p 200p
+.MEAS TRAN delay TRIG when V(1)=0.9 cross=1 TARG when V(OUT)=0.9 cross=1
+.END
+
+
+

@@ -1,0 +1,29 @@
+Simple RC Circuit
+
+* Circuit Description
+
+* Parameters
+*** add line here ***
+.PARAM CPAR 500p
+* Signal sources
+*** complete this line *** (0V 1V 0 100n 100n 10u 20u)
+Vtran 1 0 PULSE(0V 1V 0 100n 100n 10u 20u)
+* Circuit elements
+R1 1 2 1k
+C1 2 0 {CPAR}
+
+* Initial conditions
+* Analysis request
+* Run transient for 40us with 100ns step
+*** add line here ***
+.TRAN 100ns 40us
+* Use parametric sweep for CPAR: 500p:500p:1.5n
+*** add line here ***
+.STEP PARAM CPAR 500p 1.5n 500p
+* Measure rise time from 10% to 90%
+.MEAS TRAN TRISE
++ TRIG when v(2) = 0.1 CROSS = 1
+*** add line here ***
++ TARG when v(2) = 0.9 CROSS = 1
+*** add line here ***
+.END

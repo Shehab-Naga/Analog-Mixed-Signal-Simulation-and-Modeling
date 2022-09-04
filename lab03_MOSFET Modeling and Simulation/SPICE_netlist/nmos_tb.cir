@@ -1,0 +1,18 @@
+NMOS testbench
+
+* add a line here to include the model library
+.LIB my_nmos.lib
+.INC ee214b_hspice.sp
+** Circuit Description **
+
+VGS 1 0 DC 1.8V
+* add a line here (VDS source)
+VDS 2 0 DC 1.8V
+* add a line here (MOSFET instantiation)
+M1 2 1 0 0 nmos_part1_1 L=180n W=10u
+
+** Analysis Requests **
+* add a line here to do the nested DC sweep
+.DC VDS 0V 1.8V 1mV VGS 0V 1.8V 100mV
+.Plot DC I(VDS) V(1)
+.END

@@ -1,0 +1,13 @@
+Non-inverting Amplifier
+
+Vac 3 0 AC 1
+Rf 2 1 1
+
+Ginput 0 4 3 2 10
+R1 4 0 1
+C1 4 0 159.155n
+Eoutput 1 0 4 0 1
+
+.AC DEC 10 1 100meg
+
+.END

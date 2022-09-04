@@ -1,0 +1,35 @@
+CMOS inverter transient analysis
+
+.INC ee214b_hspice.sp
+
+** Inverter Subcircuit **
+.SUBCKT inverter 1 2 3 PARAMS: MULT=1
+* Connections: 	 | | |
+* 			 input | |
+*			     VDD |
+* 				output
+m1 3 1 0 0 nch L=180n W=10u M={MULT}
+m2 3 1 2 2 pch L=180n W=20u M={MULT}
+.ENDS inverter
+
+** Circuit Description **
+* power supply
+V_VDD VDD 0 DC 1.8
+* input
+V_VIN 1 0 PULSE (0 1.8 0 10p 10p 1n 2n)
+* inverters FO4
+X_I1 1 VDD 2 inverter PARAMS: MULT={4**0} ; shape input
+X_I2 2 VDD 3 inverter PARAMS: MULT={4**1} ; shape input
+X_I3 3 VDD 4 inverter PARAMS: MULT={4**2} ; circuit under test
+X_I4 4 VDD 5 inverter PARAMS: MULT={4**3} ; load output
+X_I5 5 VDD 6 inverter PARAMS: MULT={4**4} ; load output
+
+** Analysis Requests **
+.TRAN 5p 4n
+
+** Outputs Requests **
+.PROBE
+.MEAS TRAN FO4_delay TRIG when V(3)=0.9 cross=1 TARG when V(4)=0.9 cross=1
+.END
+
+

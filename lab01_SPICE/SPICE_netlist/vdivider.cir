@@ -1,0 +1,11 @@
+Voltage Divider Netlist
+* Any text after the asterisk '*' is ignored by SPICE
+* Voltage Divider
+V1 1 0 12
+R1 1 2 1k
+R2 2 0 2k
+* Perform operating point analysis
+*** add line here ***
+.OP
+*** add line here ***
+.END

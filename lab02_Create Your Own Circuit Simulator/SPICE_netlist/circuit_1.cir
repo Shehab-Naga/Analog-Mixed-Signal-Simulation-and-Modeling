@@ -1,0 +1,9 @@
+Linear Circuit
+
+R1 1 2 50
+R2 2 0 30
+R3 2 0 10
+Vb 1 0 30
+Is 0 2 2
+.op
+.End

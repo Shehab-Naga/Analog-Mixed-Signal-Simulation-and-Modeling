@@ -1,0 +1,34 @@
+Simple RC Circuit
+
+* Circuit Description
+
+* Parameters
+*** add line here ***
+.PARAM CPAR 500p
+* Signal sources
+*** add line here ***
+Vac 1 0 AC 1V
+* Circuit elements
+R1 1 2 1k
+C1 2 0 {CPAR}
+
+* Analysis request
+* Run ac sweep from 1Hz to 100MEG with 10 pts per decade
+*** add line here ***
+.AC DEC 10 1Hz 100MEG
+* Use parametric sweep for CPAR: 500p:500p:1.5n
+*** add line here ***
+.STEP PARAM CPAR 500p 1.5n 500p
+* Output request
+.PRINT AC V(1) V(2)
+.PLOT AC V(1) V(2)
+
+* Measure the peak
+.MEAS AC PEAK max mag(V(2))
+
+* Measure bandwidth using PEAK/sqrt(2)
+.MEAS AC BW
+*** add line here ***
++ WHEN mag(V(2)) = PEAK/sqrt(2)
+*** add line here ***
+.END

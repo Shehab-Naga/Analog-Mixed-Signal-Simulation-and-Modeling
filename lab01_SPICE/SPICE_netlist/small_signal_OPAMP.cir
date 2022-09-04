@@ -1,0 +1,17 @@
+* Non-ideal Op-amp (small signal) Subcircuit
+*
+* Subcircuit Description
+*
+.SUBCKT small_signal_OPAMP IN+ IN- OUT
+* connections: |   |   |
+*	   +ve input   |   |
+*		   -ve input   |
+* 				  output
+Ginput 0 4 IN+ IN- 10
+Iopen1 IN+ 0 0A			; redundant connection made at +ve input terminal
+Iopen2 IN- 0 0A			; redundant connection made at -ve input terminal
+R1 4 0 1k
+C1 4 0 159.155n
+Eoutput OUT 0 4 0 1
+.ENDS small_signal_OPAMP
+.END

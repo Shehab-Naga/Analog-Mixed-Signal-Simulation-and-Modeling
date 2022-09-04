@@ -1,0 +1,32 @@
+*************Notes***************
+
+* You may use LTspice help.
+
+* Any question mark (?) should be replaced by a word or a numeric value.
+
+* Use nmos_part1_i where i refers to the deliverable you
+* are working on.
+
+*---------------------------------*
+* Part 1.1
+.model nmos_part1_1 NMOS [LEVEL=1 Kp=183.67346u Vto=0.4]
+
+*---------------------------------*
+
+* Part1.2
+* add a line here (same as Part 1.1 except for one more parameter)
+* Don't forget to change the model name to nmos_part1_2
+.model nmos_part1_2 NMOS [LEVEL=1 Kp=183.67346u Vto=0.4 Lambda=0.1]
+*---------------------------------*
+
+* Part 1.3
+*.add a line here (same as Part 1.2 except for one more parameter)
+.model nmos_part1_3 NMOS [LEVEL=3 Kp=183.67346u Vto=0.4 Lambda=0.1 Vmax=4.28e5]
+*---------------------------------*
+
+* Part 1.6
+* add a line here (same as Part 1.3 but you have to add CJ and CJSW. Take care of the units)
+.model nmos_part1_6 NMOS [LEVEL=3 Kp=183.67346u Vto=0.4 Lambda=0.1 Vmax=4.28e5 Cjsw=0.1n Cj=1m]
+*---------------------------------*
+
+

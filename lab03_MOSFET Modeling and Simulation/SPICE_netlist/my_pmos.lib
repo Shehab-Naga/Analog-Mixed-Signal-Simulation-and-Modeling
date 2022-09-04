@@ -1,0 +1,3 @@
+
+.model pmos_part1_1 PMOS [LEVEL=1 Kp=91.83673u Vto=-0.4 Lambda=0.1]
+.model pmos_part1_2 PMOS [LEVEL=1 Kp=91.83673u Vto=-0.4 Lambda=0.1 Cjsw=0.1n Cj=1m]

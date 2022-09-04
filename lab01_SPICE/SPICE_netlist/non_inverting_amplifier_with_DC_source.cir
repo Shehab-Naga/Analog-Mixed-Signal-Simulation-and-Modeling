@@ -1,0 +1,24 @@
+Non-inverting Amplifier
+*
+* Subcircuit Description
+*
+.INC small_signal_OPAMP.cir
+
+*
+* Circuit Description
+*
+
+* Signal source
+Vin 3 0 DC 1
+
+* Circuit elements
+R1 0 2 1k
+Rf 2 1 9k
+XOPAMP1 3 2 1 small_signal_OPAMP
+
+*
+* Analysis Request
+*
+.TF V(1) Vin
+
+.END

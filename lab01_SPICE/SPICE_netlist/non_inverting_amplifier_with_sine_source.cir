@@ -1,0 +1,36 @@
+Non-inverting Amplifier
+*
+* Subcircuit Description
+*
+.INC small_signal_OPAMP.cir
+
+*
+* Circuit Description
+*
+* Parameters
+*.PARAM PERIOD = 1m
+.PARAM PERIOD = 100n ; For input frequency equal to the UGF
+
+* Signal source
+*Vin 3 0 SIN(0 1 1k 0 0)
+Vin 3 0 SIN(0 1 10MEG 0 0) ; Input frequency equal to the UGF
+* Circuit elements
+R1 0 2 1k
+Rf 2 1 9k
+XOPAMP1 3 2 1 small_signal_OPAMP
+
+*
+* Analysis Request
+*
+.TRAN {PERIOD/50} {8*PERIOD}
+
+* Output request
+.PRINT TRAN V(1) V(2) V(3)
+.PLOT TRAN V(1) V(2) V(3)
+
+* Measure the peak
+.MEAS TRAN Vout_PEAK max ABS(V(1))
+.MEAS TRAN Vsig_PEAK_+node max ABS(V(3))
+.MEAS TRAN Vsig_PEAK_-node max ABS(V(2))
+.MEAS TRAN Differential_input_PEAK max ABS(V(3)-V(2))
+.END

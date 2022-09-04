@@ -1,0 +1,23 @@
+CMOS inverter DC sweep
+
+** Circuit Description **
+* power supply
+*add a line here
+Vsupply VDD 0 1.8V
+* input
+VIN 1 0 DC 0V
+* circuit
+
+*add two lines here (NMOS and PMOS instantiation)
+M1 OUT 1 0 0 nmos_part1_2 L=180n W=10u
+M2 OUT 1 VDD VDD pmos_part1_1 L=180n W=20u
+*add a line here include the model file
+.LIB my_nmos.lib
+.LIB my_pmos.lib
+** Analysis Requests **
+.DC VIN 0 1.8 0.05
+
+** Outputs Requests **
+*.PROBE
+
+.END

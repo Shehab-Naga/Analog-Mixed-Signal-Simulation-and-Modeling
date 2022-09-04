@@ -1,0 +1,36 @@
+Non-inverting Amplifier
+*
+* Subcircuit Description
+*
+.INC small_signal_OPAMP.cir
+
+*
+* Circuit Description
+*
+* Parameters
+.PARAM RF_PAR 9k
+
+* Signal source
+Vac 3 0 AC 1V
+
+* Circuit elements
+R1 0 2 1k
+Rf 2 1 {RF_PAR}
+XOPAMP1 3 2 1 small_signal_OPAMP
+
+*
+* Analysis Request
+*
+.AC DEC 10 1Hz 100MEG
+.STEP PARAM RF_PAR LIST 9k 4k
+
+* Output request
+.PRINT TRAN V(1) V(2) V(3)
+.PLOT TRAN V(1) V(2) V(3)
+
+* Measure the peak
+.MEAS AC DC_GAIN max mag(V(1))
+.MEAS AC CUTOFF_FREQ WHEN mag(V(1)) = DC_GAIN/sqrt(2)
+.MEAS AC UGF WHEN mag(V(1)) = 1
+
+.END
